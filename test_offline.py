@@ -1,6 +1,3 @@
-"""Prueba SIN GPU: reemplaza qwen por un stub para validar el pipeline
-(parser, BFS, prompts, parseo de salida, evaluador). La entrega real debe
-generarse en Colab con el Qwen real (submit.py)."""
 import json, sys, time
 sys.path.insert(0, '.')
 import student_agent
@@ -11,7 +8,6 @@ def qwen_stub_verify(prompt, system=None, **kw):
     return "VALID"
 
 def qwen_stub_emit(prompt, system=None, **kw):
-    # simula a Qwen copiando el plan candidato mostrado en el prompt (temp 0)
     lines = [l for l in prompt.splitlines() if l.startswith("(")]
     return "\n".join(lines)
 
@@ -31,7 +27,6 @@ if __name__ == "__main__":
     ex = json.load(open("Examples.json"))
     run("verify", qwen_stub_verify, ex)
     run("emit",   qwen_stub_emit,   ex)
-    # y sobre Task.json: solo comprobar que parsea y produce salida bien formada
     tasks = json.load(open("Task.json"))
     student_agent.QWEN_MODE = "verify"
     ag = AssemblyAgent()
