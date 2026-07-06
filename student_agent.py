@@ -1,7 +1,7 @@
 import re
 from collections import deque
 
-QWEN_MODE = "cot_extract"   
+QWEN_MODE = "verify"   
 VERBOSE   = False
 
 _MYST2P = {"attack": "pickup", "succumb": "putdown",
